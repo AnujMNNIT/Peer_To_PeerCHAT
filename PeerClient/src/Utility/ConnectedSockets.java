@@ -23,11 +23,20 @@ public class ConnectedSockets implements Serializable{
     {
         mp.put(uname,ip);
         //System.out.println(uname+" "+mp.get(uname).getRemoteSocketAddress().toString());
+         for (String key : mp.keySet()) {
+			System.out.println(key);
+		}
     }
     
     public String getSocket(String uname)
     {
        // System.out.println(uname+" "+mp.get(uname).getRemoteSocketAddress().toString());
         return mp.get(uname);
-    }    
+    } 
+    public void friendslist()
+    {
+         for (String key : mp.keySet()) {
+			System.out.println(key);
+		}
+    }
 }

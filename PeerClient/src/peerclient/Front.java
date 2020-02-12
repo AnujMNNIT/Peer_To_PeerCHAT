@@ -238,6 +238,7 @@ public class Front extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         friend=jTextField1.getText();
+        sc.friendslist();
         if("".equals(friend))
         {
              JOptionPane.showMessageDialog(this,"Enter friend's name");
@@ -278,7 +279,7 @@ public class Front extends javax.swing.JFrame {
                 Filestructure file=new Filestructure(sendfilename,sendfilelocation,friend,user);//Creation of file packet(Objects)
                 System.out.println(sc.getSocket(friend));
             try {
-                socket=new Socket(sc.getSocket(friend),9998);
+                socket=new Socket(sc.getSocket(friend),9997);
             } catch (IOException ex) {
                 Logger.getLogger(Front.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -298,7 +299,7 @@ public class Front extends javax.swing.JFrame {
         {
             System.out.println(sc.getSocket(friend));
             try {
-                socket=new Socket(sc.getSocket(friend),9998);
+                socket=new Socket(sc.getSocket(friend),9997);
             } catch (IOException ex) {
                 Logger.getLogger(Front.class.getName()).log(Level.SEVERE, null, ex);
             }

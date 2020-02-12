@@ -13,7 +13,6 @@ import java.net.ServerSocket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.net.Socket;
-import javax.swing.JOptionPane;
 import peerclient.Front;
 
 public class ServerMain extends Thread{
@@ -24,7 +23,7 @@ public class ServerMain extends Thread{
     }
  
     public  void run() { 
-        int port =9998;
+        int port =9997;
         try{
         ServerSocket serverSocket = new ServerSocket(port);        
         while(true)                                                
