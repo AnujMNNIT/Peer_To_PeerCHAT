@@ -14,19 +14,24 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.net.Socket;
 import javax.swing.JOptionPane;
+import peerclient.Front;
 
 public class ServerMain extends Thread{
-     /* Main class of server
-    */
+    private Front front;
+    public ServerMain(Front front)
+    {
+        this.front=front;
+    }
+ 
     public  void run() { 
-        int port =9997;
+        int port =9998;
         try{
         ServerSocket serverSocket = new ServerSocket(port);        
         while(true)                                                
         {
             Socket clientSocket = serverSocket.accept();            
             System.out.println("Client connected");
-            ServerWorker  sw=new ServerWorker(clientSocket);    
+            ServerWorker  sw=new ServerWorker(clientSocket,front);    
             sw.start();
         }
         } catch (IOException ex) {

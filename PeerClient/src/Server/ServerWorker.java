@@ -21,9 +21,10 @@ public class ServerWorker extends Thread{
    
     private final Socket clientSocket;
     private Front front;
-    public ServerWorker(Socket clientSocket)
+    public ServerWorker(Socket clientSocket,Front front)
     {
         this.clientSocket=clientSocket;
+        this.front=front;
     }
     
     public void run()  //Thread to handle accepted connections
@@ -90,15 +91,16 @@ public class ServerWorker extends Thread{
                 if(obj instanceof message) 
                 {
                 message m=(message)obj;
+                front.handleMessage(m);
                
                   //DO something here.................................
                 System.out.println(m.getMessage());
                 }
                 else
                 {
-                    Filestructure file=(Filestructure)obj;
+                     Filestructure file=(Filestructure)obj;
                      System.out.println(file.getFilename());
-                  //Do something here...............................
+                     front.handleFile(file);
                 }
         }
     }

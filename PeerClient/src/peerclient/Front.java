@@ -50,7 +50,7 @@ public class Front extends javax.swing.JFrame {
   
    public void handleMessage(message m)
    {
-       jTextArea1.append(m.getSender()+" : "+m.getMessage());
+       jTextArea1.append(m.getSender()+" : "+m.getMessage()+"\n");
        friend=m.getSender();
        jLabel4.setText(friend);
    }
@@ -89,7 +89,7 @@ public class Front extends javax.swing.JFrame {
          InputStream inputStream=socket.getInputStream();
          ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
          sc=(ConnectedSockets) objectInputStream.readObject();
-         sm=new ServerMain();
+         sm=new ServerMain(this);
          sm.start();
    }
     @SuppressWarnings("unchecked")
@@ -298,15 +298,16 @@ public class Front extends javax.swing.JFrame {
         {
             System.out.println(sc.getSocket(friend));
             try {
-                socket=new Socket(sc.getSocket(friend),9997);
+                socket=new Socket(sc.getSocket(friend),9998);
             } catch (IOException ex) {
                 Logger.getLogger(Front.class.getName()).log(Level.SEVERE, null, ex);
             }
             cm=new ClientMain(socket);
             m=new message(jTextField2.getText(),user,friend);
+            jTextArea1.append("You: "+m.getMessage()+"\n");
             cm.send(m);//Message send operation
             jTextField2.setText("");
-            jTextArea1.append("You: "+m.getMessage()+"\n"); 
+          
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
