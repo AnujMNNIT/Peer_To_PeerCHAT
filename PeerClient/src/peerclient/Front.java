@@ -248,6 +248,10 @@ public class Front extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(this,"Friend is online");
              jLabel4.setText(friend);
         }
+        else if(sc.getSocket(friend)==null)
+        {
+             JOptionPane.showMessageDialog(this,"your friend is not online");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
